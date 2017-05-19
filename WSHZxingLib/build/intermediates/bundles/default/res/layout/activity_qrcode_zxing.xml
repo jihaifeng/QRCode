@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+  <SurfaceView
+      android:id="@+id/preview_view"
+      android:layout_width="fill_parent"
+      android:layout_height="fill_parent"
+      android:layout_centerInParent="true"
+      android:layout_gravity="center"/>
+
+  <com.wsh.base.lib.zxing.view.ViewfinderView
+      android:id="@+id/viewfinder_view"
+      android:layout_width="fill_parent"
+      android:layout_height="fill_parent"
+      android:background="@color/transparent"/>
+
+  <!-- 直接设置背景 -->
+
+  <Button
+      android:id="@+id/btn_splash"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_alignParentRight="true"
+      android:layout_margin="20dp"
+      android:background="@drawable/ic_camera_splash_off"/>
+
+  <TextView
+      android:id="@+id/txtResult"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_below="@+id/btn_splash"
+      android:layout_centerHorizontal="true"
+      android:layout_marginTop="20sp"
+      android:text="@string/qrcode_tx_info"
+      android:textSize="18sp"
+      android:visibility="visible"/>
+
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_alignParentBottom="true"
+      android:layout_centerHorizontal="true"
+      android:layout_marginBottom="30sp"
+      android:gravity="center">
+
+    <Button
+        android:id="@+id/btn_scanfile"
+        android:layout_width="120dp"
+        android:layout_height="40dp"
+        android:background="@drawable/bg_round"
+        android:text="打开文件"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        android:visibility="gone"/>
+
+    <Button
+        android:id="@+id/btn_cancel"
+        android:layout_width="120dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginStart="30dp"
+        android:background="@drawable/bg_round"
+        android:text="取消"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"/>
+  </LinearLayout>
+</RelativeLayout>

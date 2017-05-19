@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- 二维码宽度 -->
+    <dimen name="QRCode_width">200dp</dimen>
+    <!-- 二维码文字大小 -->
+    <dimen name="QRCode_text_size">20sp</dimen>
+    <dimen name="dialog_wight">300px</dimen>
+    <dimen name="dialog_height">380px</dimen>
+    <dimen name="help_size">15sp</dimen>
+
+</resources>

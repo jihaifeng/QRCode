@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "D:\\WorkSpace\\android_studio\\QRCode\\WSHZxingLib\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4\\btn_cancel.png",
+        "source": "D:\\WorkSpace\\android_studio\\QRCode\\WSHZxingLib\\build\\intermediates\\bundles\\debug\\res\\drawable-xxhdpi-v4\\btn_cancel.png"
+    },
+    {
+        "merged": "D:\\WorkSpace\\android_studio\\QRCode\\WSHZxingLib\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4\\ic_camera_splash_on.png",
+        "source": "D:\\WorkSpace\\android_studio\\QRCode\\WSHZxingLib\\build\\intermediates\\bundles\\debug\\res\\drawable-xxhdpi-v4\\ic_camera_splash_on.png"
+    },
+    {
+        "merged": "D:\\WorkSpace\\android_studio\\QRCode\\WSHZxingLib\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4\\ic_camera_splash_off.png",
+        "source": "D:\\WorkSpace\\android_studio\\QRCode\\WSHZxingLib\\build\\intermediates\\bundles\\debug\\res\\drawable-xxhdpi-v4\\ic_camera_splash_off.png"
+    }
+]

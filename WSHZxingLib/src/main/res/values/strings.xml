@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">WSHZxingLib</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    <!-- 二维码扫描界面提示文字 -->
+    <string name="title_qrcode">二维码</string>
+    <string name="qrcode_tx_info">将二维码放入框内，即可自动扫描</string>
+    <string name="qrcode_btn_cancel">取消</string>
+    <string name="btn_get_qrcode">扫描二维码</string>
+    <string name="dialog_take_title">选择图片来源</string>
+    <string name="dialog_take_photo">拍照</string>
+    <string name="dialog_take_picture">从相册获取</string>
+    <string name="dialog_qrcode_title">选择</string>
+    <string name="dialog_sendwithemail">邮件发送</string>
+    <string name="dialog_savetogallery">保存到相册</string>
+    <string name="dialog_sendsms">短信发送</string>
+    <string name="dialog_general_qrcode">二维码</string>
+    <string name="dialog_qrcode">企业二维码</string>
+    <string name="dialog_socialshare_sina">微博分享</string>
+    <string name="dialog_cancel">取消</string>
+</resources>

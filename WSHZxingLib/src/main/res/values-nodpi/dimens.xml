@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="menu_width">250dp</dimen>
+    <dimen name="head_height">50dip</dimen>    
+     <dimen name="weather_font_size">25sp</dimen> 
+    <dimen name="weather_font_tag">25sp</dimen> 
+    <dimen name="weather_icon_size">100dip</dimen>
+    <dimen name="weather_fallower_icon_size">60dip</dimen>
+    
+    
+    <dimen name="main_bottom_movie_title_font_size">18sp</dimen>
+    <dimen name="main_bottom_movie_content_font_size">16sp</dimen>
+    <dimen name="main_bottom_app_title_font_size">18sp</dimen>
+    <dimen name="main_bottom_app_content_font_size">16sp</dimen>
+
+<!-- 风景修改的部分 -->
+    <dimen name="two">2dip</dimen>
+	<dimen name="four">4dip</dimen>
+	<dimen name="five">5dip</dimen>
+	<dimen name="six">6dip</dimen>
+	<dimen name="eight">8dip</dimen>
+	<dimen name="ten">10dip</dimen>
+	<dimen name="twelve">12.0dip</dimen>
+	<dimen name="forteen">14.0dip</dimen>
+	<dimen name="sixteen">16.0dip</dimen>
+	<dimen name="eighteen">18.0dip</dimen>
+	<dimen name="twenty">20dip</dimen>
+	<dimen name="twentyfour">24dip</dimen>
+	<dimen name="thirty">30.0dip</dimen>
+	<dimen name="thirtysix">36.0dip</dimen>
+	<dimen name="forty">40.0dip</dimen>
+	<dimen name="fortyfour">44.0dip</dimen>
+	<dimen name="topheight">48dip</dimen>
+	<dimen name="bottomheight">54dip</dimen>
+	<dimen name="fifty">50.0dip</dimen>
+	<dimen name="sixty">60.0dip</dimen>
+	<dimen name="sixty_five">65.0dip</dimen>
+	<dimen name="seventy">72.0dip</dimen>
+	<dimen name="eighty">80.0dip</dimen>
+	<dimen name="ninety">87.0dip</dimen>
+	<dimen name="ninety_two">92.0dip</dimen>
+	<dimen name="hundred">100dp</dimen>
+	<dimen name="thundred">300dp</dimen>
+	<dimen name="hundredandeigthty">180dp</dimen>
+	<dimen name="hundredandninety">190dp</dimen>
+	<dimen name="hundredandforty">140dp</dimen>
+	<dimen name="hundredandtwenty">126dp</dimen>	
+	<dimen name="help_size">15sp</dimen>
+		<!-- swp -->
+		
+			<dimen name="dialog_left_margin">10dp</dimen>
+	<dimen name="dialog_top_margin">30dp</dimen>
+	<dimen name="dialog_right_margin">10dp</dimen>
+	<dimen name="dialog_bottom_margin">10dp</dimen>		
+	<dimen name="dialog_btn_close_right_margin">10dp</dimen>
+	<dimen name="dialog_btn_close_top_margin">10dp</dimen>
+	<dimen name="dialog_title_logo_left_margin">5dp</dimen>
+	<dimen name="dialog_title_height">30dp</dimen>
+		
+	<!-- 导航条 -->
+	
+	<dimen name="nav_height">48dp</dimen>
+	
+	<dimen name="left_width">56dp</dimen>
+	<dimen name="left_height">32dp</dimen>
+	<dimen name="left_marginleft">8dp</dimen>
+	<dimen name="leftbchar_paddingleft">16dp</dimen>
+	<dimen name="leftchar_textsize">16dp</dimen>
+	
+	<dimen name="right_width">34dp</dimen>
+	<dimen name="right_height">30dp</dimen>
+	<dimen name="rightbtn_marginright">10dp</dimen>
+	
+	<dimen name="titlechar_textsize">18sp</dimen>
+	
+	
+		<!-- 标识 -->
+	
+	<dimen name="signiv_marginleft">0dp</dimen>
+	<dimen name="signchar_marginleft">12dp</dimen>
+	<dimen name="signchar_textsize">18sp</dimen>
+	<dimen name="signcheck_marginright">10dp</dimen>
+	
+	<dimen name="signiv_width">30dp</dimen>
+	<dimen name="signiv_height">50dp</dimen>
+	<!-- swp -->
+	
+	
+</resources>

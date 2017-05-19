@@ -1,0 +1,330 @@
+[
+    {
+        "outputFile": "D:\\WorkSpace\\android_studio\\QRCode\\WSHZxingLib\\build\\intermediates\\incremental\\mergeDebugAndroidTestResources\\merged.dir\\values-320x240\\values-320x240.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 47,
+                    "endOffset": 98
+                },
+                "from": {
+                    "file": "D:\\WorkSpace\\android_studio\\QRCode\\WSHZxingLib\\build\\intermediates\\bundles\\debug\\res\\values-320x240\\values-320x240.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 55,
+                        "endColumn": 47,
+                        "endOffset": 98
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 3,
+                    "startColumn": 4,
+                    "startOffset": 103,
+                    "endColumn": 44,
+                    "endOffset": 143
+                },
+                "from": {
+                    "file": "D:\\WorkSpace\\android_studio\\QRCode\\WSHZxingLib\\build\\intermediates\\bundles\\debug\\res\\values-320x240\\values-320x240.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 103,
+                        "endColumn": 44,
+                        "endOffset": 143
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 4,
+                    "startColumn": 4,
+                    "startOffset": 148,
+                    "endColumn": 45,
+                    "endOffset": 189
+                },
+                "from": {
+                    "file": "D:\\WorkSpace\\android_studio\\QRCode\\WSHZxingLib\\build\\intermediates\\bundles\\debug\\res\\values-320x240\\values-320x240.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 148,
+                        "endColumn": 45,
+                        "endOffset": 189
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 5,
+                    "startColumn": 4,
+                    "startOffset": 194,
+                    "endColumn": 44,
+                    "endOffset": 234
+                },
+                "from": {
+                    "file": "D:\\WorkSpace\\android_studio\\QRCode\\WSHZxingLib\\build\\intermediates\\bundles\\debug\\res\\values-320x240\\values-320x240.xml",
+                    "position": {
+                        "startLine": 5,
+                        "startColumn": 4,
+                        "startOffset": 194,
+                        "endColumn": 44,
+                        "endOffset": 234
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 6,
+                    "startColumn": 4,
+                    "startOffset": 239,
+                    "endColumn": 40,
+                    "endOffset": 275
+                },
+                "from": {
+                    "file": "D:\\WorkSpace\\android_studio\\QRCode\\WSHZxingLib\\build\\intermediates\\bundles\\debug\\res\\values-320x240\\values-320x240.xml",
+                    "position": {
+                        "startLine": 6,
+                        "startColumn": 4,
+                        "startOffset": 239,
+                        "endColumn": 40,
+                        "endOffset": 275
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 7,
+                    "startColumn": 4,
+                    "startOffset": 280,
+                    "endColumn": 39,
+                    "endOffset": 315
+                },
+                "from": {
+                    "file": "D:\\WorkSpace\\android_studio\\QRCode\\WSHZxingLib\\build\\intermediates\\bundles\\debug\\res\\values-320x240\\values-320x240.xml",
+                    "position": {
+                        "startLine": 7,
+                        "startColumn": 4,
+                        "startOffset": 280,
+                        "endColumn": 39,
+                        "endOffset": 315
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 8,
+                    "startColumn": 4,
+                    "startOffset": 320,
+                    "endColumn": 35,
+                    "endOffset": 351
+                },
+                "from": {
+                    "file": "D:\\WorkSpace\\android_studio\\QRCode\\WSHZxingLib\\build\\intermediates\\bundles\\debug\\res\\values-320x240\\values-320x240.xml",
+                    "position": {
+                        "startLine": 8,
+                        "startColumn": 4,
+                        "startOffset": 320,
+                        "endColumn": 35,
+                        "endOffset": 351
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 9,
+                    "startColumn": 4,
+                    "startOffset": 356,
+                    "endColumn": 42,
+                    "endOffset": 394
+                },
+                "from": {
+                    "file": "D:\\WorkSpace\\android_studio\\QRCode\\WSHZxingLib\\build\\intermediates\\bundles\\debug\\res\\values-320x240\\values-320x240.xml",
+                    "position": {
+                        "startLine": 9,
+                        "startColumn": 4,
+                        "startOffset": 356,
+                        "endColumn": 42,
+                        "endOffset": 394
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 10,
+                    "startColumn": 4,
+                    "startOffset": 399,
+                    "endColumn": 45,
+                    "endOffset": 440
+                },
+                "from": {
+                    "file": "D:\\WorkSpace\\android_studio\\QRCode\\WSHZxingLib\\build\\intermediates\\bundles\\debug\\res\\values-320x240\\values-320x240.xml",
+                    "position": {
+                        "startLine": 10,
+                        "startColumn": 4,
+                        "startOffset": 399,
+                        "endColumn": 45,
+                        "endOffset": 440
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 11,
+                    "startColumn": 4,
+                    "startOffset": 445,
+                    "endColumn": 42,
+                    "endOffset": 483
+                },
+                "from": {
+                    "file": "D:\\WorkSpace\\android_studio\\QRCode\\WSHZxingLib\\build\\intermediates\\bundles\\debug\\res\\values-320x240\\values-320x240.xml",
+                    "position": {
+                        "startLine": 11,
+                        "startColumn": 4,
+                        "startOffset": 445,
+                        "endColumn": 42,
+                        "endOffset": 483
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 12,
+                    "startColumn": 4,
+                    "startOffset": 488,
+                    "endColumn": 45,
+                    "endOffset": 529
+                },
+                "from": {
+                    "file": "D:\\WorkSpace\\android_studio\\QRCode\\WSHZxingLib\\build\\intermediates\\bundles\\debug\\res\\values-320x240\\values-320x240.xml",
+                    "position": {
+                        "startLine": 12,
+                        "startColumn": 4,
+                        "startOffset": 488,
+                        "endColumn": 45,
+                        "endOffset": 529
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 13,
+                    "startColumn": 4,
+                    "startOffset": 534,
+                    "endColumn": 49,
+                    "endOffset": 579
+                },
+                "from": {
+                    "file": "D:\\WorkSpace\\android_studio\\QRCode\\WSHZxingLib\\build\\intermediates\\bundles\\debug\\res\\values-320x240\\values-320x240.xml",
+                    "position": {
+                        "startLine": 13,
+                        "startColumn": 4,
+                        "startOffset": 534,
+                        "endColumn": 49,
+                        "endOffset": 579
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 14,
+                    "startColumn": 4,
+                    "startOffset": 584,
+                    "endColumn": 33,
+                    "endOffset": 613
+                },
+                "from": {
+                    "file": "D:\\WorkSpace\\android_studio\\QRCode\\WSHZxingLib\\build\\intermediates\\bundles\\debug\\res\\values-320x240\\values-320x240.xml",
+                    "position": {
+                        "startLine": 14,
+                        "startColumn": 4,
+                        "startOffset": 584,
+                        "endColumn": 33,
+                        "endOffset": 613
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 15,
+                    "startColumn": 4,
+                    "startOffset": 618,
+                    "endColumn": 44,
+                    "endOffset": 658
+                },
+                "from": {
+                    "file": "D:\\WorkSpace\\android_studio\\QRCode\\WSHZxingLib\\build\\intermediates\\bundles\\debug\\res\\values-320x240\\values-320x240.xml",
+                    "position": {
+                        "startLine": 15,
+                        "startColumn": 4,
+                        "startOffset": 618,
+                        "endColumn": 44,
+                        "endOffset": 658
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 16,
+                    "startColumn": 4,
+                    "startOffset": 663,
+                    "endColumn": 47,
+                    "endOffset": 706
+                },
+                "from": {
+                    "file": "D:\\WorkSpace\\android_studio\\QRCode\\WSHZxingLib\\build\\intermediates\\bundles\\debug\\res\\values-320x240\\values-320x240.xml",
+                    "position": {
+                        "startLine": 16,
+                        "startColumn": 4,
+                        "startOffset": 663,
+                        "endColumn": 47,
+                        "endOffset": 706
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 17,
+                    "startColumn": 4,
+                    "startOffset": 711,
+                    "endColumn": 56,
+                    "endOffset": 763
+                },
+                "from": {
+                    "file": "D:\\WorkSpace\\android_studio\\QRCode\\WSHZxingLib\\build\\intermediates\\bundles\\debug\\res\\values-320x240\\values-320x240.xml",
+                    "position": {
+                        "startLine": 17,
+                        "startColumn": 4,
+                        "startOffset": 711,
+                        "endColumn": 56,
+                        "endOffset": 763
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 18,
+                    "startColumn": 4,
+                    "startOffset": 768,
+                    "endColumn": 59,
+                    "endOffset": 823
+                },
+                "from": {
+                    "file": "D:\\WorkSpace\\android_studio\\QRCode\\WSHZxingLib\\build\\intermediates\\bundles\\debug\\res\\values-320x240\\values-320x240.xml",
+                    "position": {
+                        "startLine": 18,
+                        "startColumn": 4,
+                        "startOffset": 768,
+                        "endColumn": 59,
+                        "endOffset": 823
+                    }
+                }
+            }
+        ]
+    }
+]

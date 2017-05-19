@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "D:\\WorkSpace\\android_studio\\QRCode\\WSHZxingLib\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\ic_camera_splash_on.png",
+        "source": "D:\\WorkSpace\\android_studio\\QRCode\\WSHZxingLib\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\ic_camera_splash_on.png"
+    },
+    {
+        "merged": "D:\\WorkSpace\\android_studio\\QRCode\\WSHZxingLib\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\btn_cancel.png",
+        "source": "D:\\WorkSpace\\android_studio\\QRCode\\WSHZxingLib\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\btn_cancel.png"
+    },
+    {
+        "merged": "D:\\WorkSpace\\android_studio\\QRCode\\WSHZxingLib\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\city_selected_dir.png",
+        "source": "D:\\WorkSpace\\android_studio\\QRCode\\WSHZxingLib\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\city_selected_dir.png"
+    },
+    {
+        "merged": "D:\\WorkSpace\\android_studio\\QRCode\\WSHZxingLib\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4\\ic_camera_splash_off.png",
+        "source": "D:\\WorkSpace\\android_studio\\QRCode\\WSHZxingLib\\build\\intermediates\\bundles\\debug\\res\\drawable-hdpi-v4\\ic_camera_splash_off.png"
+    }
+]
