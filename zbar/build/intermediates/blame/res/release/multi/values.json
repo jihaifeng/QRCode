@@ -1,0 +1,26 @@
+[
+    {
+        "outputFile": "D:\\workSpace\\android_studio\\QRCode\\zbar\\build\\intermediates\\incremental\\mergeReleaseResources\\merged.dir\\values\\values.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 3,
+                    "startColumn": 4,
+                    "startOffset": 1942,
+                    "endColumn": 53,
+                    "endOffset": 1991
+                },
+                "from": {
+                    "file": "D:\\workSpace\\android_studio\\QRCode\\qrcodecore\\build\\intermediates\\bundles\\default\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 1942,
+                        "endColumn": 53,
+                        "endOffset": 1991
+                    }
+                }
+            }
+        ]
+    }
+]

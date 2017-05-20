@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="business_list_item_icon_size">80sp</dimen>
+    <dimen name="business_list_item_message_font_size">18sp</dimen>
+    <dimen name="business_list_item_title_font_size">20sp</dimen>
+    <dimen name="head_height">48dip</dimen>
+    <dimen name="head_title_size">20sp</dimen>
+    <dimen name="help_size">18sp</dimen>
+    <dimen name="home_item_size">14sp</dimen>
+    <dimen name="home_page_flow_hint_textsize">12sp</dimen>
+    <dimen name="home_page_flow_left_textsize">20sp</dimen>
+    <dimen name="home_page_flow_unit_textsize">12sp</dimen>
+    <dimen name="main_bottom_app_content_font_size">16sp</dimen>
+    <dimen name="main_bottom_app_title_font_size">20sp</dimen>
+    <dimen name="main_bottom_icon_size">80dip</dimen>
+    <dimen name="main_bottom_movie_content_font_size">16sp</dimen>
+    <dimen name="main_bottom_movie_title_font_size">20sp</dimen>
+    <dimen name="main_bottom_weatherlarge_font_size_1">22sp</dimen>
+    <dimen name="main_bottom_weatherlarge_font_size_2">20sp</dimen>
+    <dimen name="main_bottom_weatherlarge_font_size_3">18sp</dimen>
+    <dimen name="menu_width">260dip</dimen>
+    <dimen name="microlife_titlebar_tv_text_size">22sp</dimen>
+    <dimen name="person_personcenter_main_iv_pic_size">80dp</dimen>
+    <dimen name="publish_padding">5sp</dimen>
+    <dimen name="weather_fallower_icon_size">25dip</dimen>
+    <dimen name="weather_font_size">25sp</dimen>
+    <dimen name="weather_font_tag">22sp</dimen>
+    <dimen name="weather_icon_size">60dip</dimen>
+</resources>

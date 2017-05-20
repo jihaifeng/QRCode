@@ -46,4 +46,10 @@ dependencies {
   compile 'com.android.support:appcompat-v7:25.3.1'
   testCompile 'junit:junit:4.12'
   compile project(':WSHZxingLib')
+  // -------------------- 以下两个库是必须依赖的 ----------------------------
+  compile 'cn.bingoogolapple:bga-qrcodecore:1.1.7@aar'
+  compile 'cn.bingoogolapple:bga-zbar:1.1.7@aar'
+  // -------------------- 以上两个库是必须依赖的 ----------------------------
+  compile project(':qrcodecore')
+  compile project(':zbar')
 }

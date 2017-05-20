@@ -91,7 +91,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) == PackageManager.PERMISSION_DENIED) {
           ActivityCompat.requestPermissions(this, new String[] { Manifest.permission.CAMERA }, SCAN_PERMISSION_CODE);
         } else {
-          startScan();
+          startZbarScan();
         }
         break;
       case R.id.btn_clear:
@@ -142,7 +142,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     builder.create().show();
   }
 
-  private void startScan() {
+  private void startZbarScan() {
+    Intent intent = new Intent(this, ScanActivity.class);
+    startActivityForResult(intent, SCAN_RESOULT_CODE);
+  }
+  private void startZxingScan() {
     Intent intent = new Intent(this, CaptureActivity.class);
     startActivityForResult(intent, SCAN_RESOULT_CODE);
   }
@@ -162,7 +166,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
   public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
     if (requestCode == SCAN_PERMISSION_CODE) {
       if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-        startScan();
+        startZbarScan();
       } else {
         Toast.makeText(this, "缺少扫描权限，请授权后重试", Toast.LENGTH_SHORT).show();
       }
