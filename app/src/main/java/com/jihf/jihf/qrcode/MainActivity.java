@@ -89,7 +89,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     switch (v.getId()) {
       case R.id.btn_scan:
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) == PackageManager.PERMISSION_DENIED) {
-          ActivityCompat.requestPermissions(this, new String[] { Manifest.permission.CAMERA }, SCAN_PERMISSION_CODE);
+          ActivityCompat.requestPermissions(this, new String[] { Manifest.permission.CAMERA ,Manifest.permission.WRITE_EXTERNAL_STORAGE},
+              SCAN_PERMISSION_CODE);
         } else {
           startZbarScan();
         }
