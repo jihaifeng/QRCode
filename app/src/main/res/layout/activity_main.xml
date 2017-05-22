@@ -71,14 +71,13 @@
         />
 
     <Button
-        android:id="@+id/btn_open_fload"
+        android:id="@+id/btn_upload"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
         android:layout_marginLeft="10dp"
         android:background="@drawable/btn_bg_select"
-        android:text="打开文件夹"
+        android:text="上传FTP"
         android:textColor="@android:color/holo_orange_light"
-        android:visibility="gone"
         />
 
   </LinearLayout>

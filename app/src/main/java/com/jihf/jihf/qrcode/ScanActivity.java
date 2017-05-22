@@ -93,11 +93,11 @@ public class ScanActivity extends AppCompatActivity implements View.OnClickListe
 
     if (!TextUtils.isEmpty(result)) {
       Toast.makeText(this, result, Toast.LENGTH_SHORT).show();
-      if (!strings.contains(result)) {
-        strings.add(result);
+      if (!Config.getQrCodeData().contains(result)) {
+        Config.getQrCodeData().add(result);
       }
     }
-    Config.setQrCodeData(strings);
+    //Config.setQrCodeData(strings);
     if (Config.isAutoExport()) {
       FileLogger.getInstance().saveCrashInfoFile(strings);
     }

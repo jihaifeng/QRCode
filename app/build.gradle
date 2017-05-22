@@ -52,4 +52,5 @@ dependencies {
   // -------------------- 以上两个库是必须依赖的 ----------------------------
   compile project(':qrcodecore')
   compile project(':zbar')
+  compile files('libs/commons-net-3.0.1.jar')
 }

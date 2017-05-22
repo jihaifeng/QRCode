@@ -5,8 +5,8 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.net.Uri;
 import android.os.Bundle;
+import android.os.Looper;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
@@ -19,11 +19,13 @@ import android.widget.CompoundButton;
 import android.widget.ListView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
+import com.jihf.jihf.qrcode.ftp.FTPListenter;
+import com.jihf.jihf.qrcode.ftp.FTPManager;
 import com.wsh.base.lib.zxing.CaptureActivity;
 import com.wsh.base.lib.zxing.log.Config;
 import com.wsh.base.lib.zxing.log.FileLogger;
 import com.wsh.base.lib.zxing.log.FileUtils;
-import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -35,14 +37,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
   private Button btnScan;
   private Button btnClear;
   private Button btnExport;
-  private Button btnOpenFload;
+  private Button btnUpload;
   private ToggleButton toggAutoScan;
   private ToggleButton toggAutoExport;
   private ListView listView;
+  private FTPManager manager;
+  private SPUtils spUtils;
+  private String SP_TAG = "114Data";
 
   @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
+    manager = FTPManager.getInstance().connect();
+    spUtils = new SPUtils("114Scan", this);
     initView();
   }
 
@@ -53,8 +60,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     btnClear.setOnClickListener(this);
     btnExport = (Button) findViewById(R.id.btn_export);
     btnExport.setOnClickListener(this);
-    btnOpenFload = (Button) findViewById(R.id.btn_open_fload);
-    btnOpenFload.setOnClickListener(this);
+    btnUpload = (Button) findViewById(R.id.btn_upload);
+    btnUpload.setOnClickListener(this);
 
     toggAutoScan = (ToggleButton) findViewById(R.id.togg_auto_scan);
     toggAutoScan.setChecked(Config.autoScan);
@@ -77,6 +84,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     listView = (ListView) findViewById(R.id.lv_data);
     qrCodeAdapter = new QRCodeAdapter();
     listView.setAdapter(qrCodeAdapter);
+    String dataCache = spUtils.getString(SP_TAG);
+    try {
+      if (!TextUtils.isEmpty(dataCache)) {
+        Config.setQrCodeData(StringUtils.stringToList(dataCache));
+        qrCodeAdapter.updateData(StringUtils.stringToList(dataCache));
+      }
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
   }
 
   private void switchToggleBg() {
@@ -89,7 +105,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     switch (v.getId()) {
       case R.id.btn_scan:
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) == PackageManager.PERMISSION_DENIED) {
-          ActivityCompat.requestPermissions(this, new String[] { Manifest.permission.CAMERA ,Manifest.permission.WRITE_EXTERNAL_STORAGE},
+          ActivityCompat.requestPermissions(this,
+              new String[] { Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE },
               SCAN_PERMISSION_CODE);
         } else {
           startZbarScan();
@@ -106,22 +123,29 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
           Toast.makeText(this, "文件导出失败", Toast.LENGTH_SHORT).show();
         }
         break;
-      case R.id.btn_open_fload:
-        openAssignFolder(FileLogger.getInstance().getFliePath());
+      case R.id.btn_upload:
+        FileLogger.getInstance().saveCrashInfoFile(Config.getQrCodeData());
+        manager.uploadFile(FileLogger.getInstance().getFliePath(), new FTPListenter() {
+          @Override public void onSuccess() {
+            Log.i(TAG, "onSuccess: ");
+            Looper.prepare();
+            Toast.makeText(MainActivity.this, "文件上传成功", Toast.LENGTH_SHORT).show();
+            Looper.loop();
+          }
+
+          @Override public void onProcess(long process) {
+            Log.i(TAG, "onProcess: " + process);
+          }
+
+          @Override public void onFailure(String errorMsg) {
+            Log.i(TAG, "onFailure: " + errorMsg);
+            Looper.prepare();
+            Toast.makeText(MainActivity.this, "errorMsg：" + errorMsg, Toast.LENGTH_SHORT).show();
+            Looper.loop();
+          }
+        });
         break;
     }
-  }
-
-  private void openAssignFolder(String path) {
-    //getUrl()获取文件目录，例如返回值为/storage/sdcard1/MIUI/music/mp3_hd/单色冰淇凌_单色凌.mp3
-    File file = new File(path);
-    //获取父目录
-    //File parentFlie = new File(file.getParent());
-    Log.i(TAG, "openAssignFolder: " + file);
-    Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-    intent.setDataAndType(Uri.fromFile(file), "*/*");
-    intent.addCategory(Intent.CATEGORY_OPENABLE);
-    startActivity(intent);
   }
 
   protected void dialog() {
@@ -132,6 +156,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
       @Override public void onClick(DialogInterface dialog, int which) {
         dialog.dismiss();
         boolean isDelect = FileUtils.deleteFile(FileLogger.getInstance().getFliePath());
+        qrCodeAdapter.clearData();
+        spUtils.put(SP_TAG, "");
+        Config.clearData();
         Toast.makeText(MainActivity.this, isDelect ? "文件删除成功" : "文件删除失败", Toast.LENGTH_SHORT).show();
       }
     });
@@ -147,6 +174,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Intent intent = new Intent(this, ScanActivity.class);
     startActivityForResult(intent, SCAN_RESOULT_CODE);
   }
+
   private void startZxingScan() {
     Intent intent = new Intent(this, CaptureActivity.class);
     startActivityForResult(intent, SCAN_RESOULT_CODE);
@@ -156,6 +184,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     switch (requestCode) {
       case SCAN_RESOULT_CODE:
         List<String> list = Config.getQrCodeData();
+        Log.i(TAG, "onActivityResult: " + list);
         if (null != list) {
           qrCodeAdapter.updateData(list);
         }
@@ -172,5 +201,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Toast.makeText(this, "缺少扫描权限，请授权后重试", Toast.LENGTH_SHORT).show();
       }
     }
+  }
+
+  @Override protected void onDestroy() {
+    super.onDestroy();
+    try {
+      if (null != Config.getQrCodeData() && Config.getQrCodeData().size() != 0) {
+        spUtils.put(SP_TAG, StringUtils.listToString(Config.getQrCodeData()));
+      }
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+    Log.i(TAG, "onDestroy: ");
   }
 }

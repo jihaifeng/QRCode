@@ -1,10 +1,12 @@
 package com.jihf.jihf.qrcode;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -18,11 +20,25 @@ public class QRCodeAdapter extends BaseAdapter {
   private List<String> list;
 
   public void updateData(List<String> stringList) {
-    if (null != list) {
+    if (null == list) {
+      list = new ArrayList<>();
+    }
+    if (list.size() != 0) {
       list.clear();
     }
     if (null != stringList) {
-      list = stringList;
+      list.addAll(stringList);
+    }
+    Log.i("MainActivity", "updateData: " + list);
+    notifyDataSetChanged();
+  }
+
+  public void clearData() {
+    if (null == list) {
+      list = new ArrayList<>();
+    }
+    if (list.size() != 0) {
+      list.clear();
     }
     notifyDataSetChanged();
   }

@@ -1,10 +1,10 @@
 [
     {
-        "merged": "D:\\workSpace\\android_studio\\QRCode\\zbar\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi-v4\\qrcode_default_grid_scan_line.png",
-        "source": "D:\\workSpace\\android_studio\\QRCode\\qrcodecore\\build\\intermediates\\bundles\\default\\res\\mipmap-xxhdpi-v4\\qrcode_default_grid_scan_line.png"
+        "merged": "D:\\WorkSpace\\android_studio\\QRCode\\zbar\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi-v4\\qrcode_default_grid_scan_line.png",
+        "source": "D:\\WorkSpace\\android_studio\\QRCode\\qrcodecore\\build\\intermediates\\bundles\\default\\res\\mipmap-xxhdpi-v4\\qrcode_default_grid_scan_line.png"
     },
     {
-        "merged": "D:\\workSpace\\android_studio\\QRCode\\zbar\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi-v4\\qrcode_default_scan_line.png",
-        "source": "D:\\workSpace\\android_studio\\QRCode\\qrcodecore\\build\\intermediates\\bundles\\default\\res\\mipmap-xxhdpi-v4\\qrcode_default_scan_line.png"
+        "merged": "D:\\WorkSpace\\android_studio\\QRCode\\zbar\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi-v4\\qrcode_default_scan_line.png",
+        "source": "D:\\WorkSpace\\android_studio\\QRCode\\qrcodecore\\build\\intermediates\\bundles\\default\\res\\mipmap-xxhdpi-v4\\qrcode_default_scan_line.png"
     }
 ]

@@ -13,7 +13,6 @@ import java.util.List;
 public class Config {
   private static List<String> mQRCodeList = new ArrayList<>();
 
-
   public static boolean autoScan = false;
   public static boolean autoExport = false;
 
@@ -41,5 +40,11 @@ public class Config {
 
   public static void setAutoExport(boolean autoExport) {
     Config.autoExport = autoExport;
+  }
+
+  public static void clearData() {
+    if (null != mQRCodeList) {
+      mQRCodeList.clear();
+    }
   }
 }
