@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:orientation="vertical"
+      android:padding="5dp">
+
+    <EditText
+        android:id="@+id/edit_url"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:hint="填写域名，不需要加ftp://"/>
+
+    <EditText
+        android:id="@+id/edit_port"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="端口，限制数字，没有可以不填"
+        android:inputType="number"/>
+
+    <EditText
+        android:id="@+id/edit_path"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="文件夹目录，以 / 结尾"/>
+
+    <EditText
+        android:id="@+id/edit_userName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="登录用户名"/>
+
+    <EditText
+        android:id="@+id/edit_userPass"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="用户密码"/>
+
+  </LinearLayout>
+
+  <Button
+      android:id="@+id/btn_set"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_alignParentBottom="true"
+      android:layout_margin="10dp"
+      android:background="@drawable/btn_bg_select"
+      android:text="设定"
+      android:textColor="@android:color/white"
+      android:textSize="18sp"/>
+
+  <Button
+      android:id="@+id/btn_reset"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_above="@+id/btn_set"
+      android:layout_margin="10dp"
+      android:background="@drawable/btn_bg_select"
+      android:text="重置为初始值"
+      android:textColor="@android:color/white"
+      android:textSize="18sp"/>
+</RelativeLayout>

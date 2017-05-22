@@ -38,6 +38,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
   private Button btnClear;
   private Button btnExport;
   private Button btnUpload;
+  private Button btnSetting;
+  private Button btnCheck;
   private ToggleButton toggAutoScan;
   private ToggleButton toggAutoExport;
   private ListView listView;
@@ -62,6 +64,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     btnExport.setOnClickListener(this);
     btnUpload = (Button) findViewById(R.id.btn_upload);
     btnUpload.setOnClickListener(this);
+    btnSetting = (Button) findViewById(R.id.btn_setting);
+    btnSetting.setOnClickListener(this);
+    btnCheck = (Button) findViewById(R.id.btn_check);
+    btnCheck.setOnClickListener(this);
 
     toggAutoScan = (ToggleButton) findViewById(R.id.togg_auto_scan);
     toggAutoScan.setChecked(Config.autoScan);
@@ -144,6 +150,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Looper.loop();
           }
         });
+        break;
+      case R.id.btn_setting:
+        startActivity(new Intent(this, SettingActivity.class));
+        break;
+      case R.id.btn_check:
+        startActivity(new Intent(this, InfoActivity.class));
         break;
     }
   }

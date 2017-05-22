@@ -24,10 +24,11 @@ public class FTPManager {
   public static final String TAG = FTPManager.class.getSimpleName();
   private static FTPManager instance;
   private static FTPClient ftpClient;
-  private final String url = "220.250.65.22";
-  private final String serverPath = "invoice/";
-  private final String userName = "sina";
-  private final String userPass = "r7Wd@H0ld";
+  private String url = "220.250.65.22";
+  private int port = -1;
+  private String serverPath = "invoice/";
+  private String userName = "sina";
+  private String userPass = "r7Wd@H0ld";
   private final int CONNECT_TIMEOUT = 3 * 60 * 1000;
   private boolean isConnected = false;
   private boolean isUpload = false;
@@ -267,7 +268,11 @@ public class FTPManager {
           }
           ftpClient.setDataTimeout(CONNECT_TIMEOUT);//设置连接超时时间
           ftpClient.setControlEncoding("utf-8");
-          ftpClient.connect(url);
+          if (port == -1) {
+            ftpClient.connect(url);
+          } else {
+            ftpClient.connect(url, port);
+          }
           if (FTPReply.isPositiveCompletion(ftpClient.getReplyCode())) {
             // 登录ftp服务器
             if (ftpClient.login(userName, userPass)) {
@@ -303,5 +308,45 @@ public class FTPManager {
       return false;
     }
     return true;
+  }
+
+  public void setUrl(String url) {
+    this.url = url;
+  }
+
+  public void setPort(int port) {
+    this.port = port;
+  }
+
+  public void setServerPath(String serverPath) {
+    this.serverPath = serverPath;
+  }
+
+  public void setUserName(String userName) {
+    this.userName = userName;
+  }
+
+  public void setUserPass(String userPass) {
+    this.userPass = userPass;
+  }
+
+  public String getUrl() {
+    return url;
+  }
+
+  public int getPort() {
+    return port;
+  }
+
+  public String getServerPath() {
+    return serverPath;
+  }
+
+  public String getUserName() {
+    return userName;
+  }
+
+  public String getUserPass() {
+    return userPass;
   }
 }
