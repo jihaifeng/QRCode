@@ -6,7 +6,9 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.Looper;
+import android.os.Message;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
@@ -19,6 +21,7 @@ import android.widget.CompoundButton;
 import android.widget.ListView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
+import com.jihf.jihf.qrcode.ftp.FTPConfig;
 import com.jihf.jihf.qrcode.ftp.FTPListenter;
 import com.jihf.jihf.qrcode.ftp.FTPManager;
 import com.wsh.base.lib.zxing.CaptureActivity;
@@ -46,13 +49,70 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
   private FTPManager manager;
   private SPUtils spUtils;
   private String SP_TAG = "114Data";
+  private android.os.Handler connectHandler = new Handler(new Handler.Callback() {
+    @Override public boolean handleMessage(Message msg) {
+      upload(msg);
+      return false;
+    }
+  });
+  private android.os.Handler uploadtHandler = new Handler(new Handler.Callback() {
+    @Override public boolean handleMessage(Message msg) {
+      if (msg.what == -2) {
+        Toast.makeText(MainActivity.this, TextUtils.isEmpty(msg.obj.toString()) ? "上传失败" : msg.obj.toString(),
+            Toast.LENGTH_SHORT).show();
+      } else if (msg.what == 2) {
+        Toast.makeText(MainActivity.this, "文件上传成功", Toast.LENGTH_SHORT).show();
+        clearLocalData();
+      }
+      return false;
+    }
+  });
 
-  @Override protected void onCreate(Bundle savedInstanceState) {
+  private void upload(final Message message) {
+
+    if (message.what == 1) {
+      final Message msg = new Message();
+      manager.uploadFile(FileLogger.getInstance().getFliePath(), new FTPListenter() {
+        @Override public void onSuccess() {
+          Log.i(TAG, "onSuccess: ");
+          msg.what = 2;
+          uploadtHandler.sendMessage(msg);
+        }
+
+        @Override public void onProcess(long process) {
+          Log.i(TAG, "onProcess: " + process);
+        }
+
+        @Override public void onFailure(String errorMsg) {
+          Log.i(TAG, "onFailure: " + errorMsg);
+          msg.what = -2;
+          msg.obj = errorMsg;
+          uploadtHandler.sendMessage(msg);
+        }
+      });
+    } else if (message.what == -1) {
+      Toast.makeText(this, TextUtils.isEmpty(message.obj.toString()) ? "ftp连接失败" : message.obj.toString(),
+          Toast.LENGTH_SHORT).show();
+    }
+  }
+
+  @Override
+
+  protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
-    manager = FTPManager.getInstance().connect();
+    manager = FTPManager.getInstance(this);
     spUtils = new SPUtils("114Scan", this);
+    initConfig();
     initView();
+  }
+
+  private void initConfig() {
+    spUtils.put(FTPConfig.URL, spUtils.getString(FTPConfig.URL, FTPConfig.default_url));
+    spUtils.put(FTPConfig.PORT, spUtils.getInt(FTPConfig.PORT, FTPConfig.default_port));
+    spUtils.put(FTPConfig.PATH, spUtils.getString(FTPConfig.PATH, FTPConfig.default_serverPath));
+    spUtils.put(FTPConfig.USERNAME, spUtils.getString(FTPConfig.USERNAME, FTPConfig.default_userName));
+    spUtils.put(FTPConfig.USERPASS, spUtils.getString(FTPConfig.USERPASS, FTPConfig.default_userPass));
   }
 
   private void initView() {
@@ -131,25 +191,28 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         break;
       case R.id.btn_upload:
         FileLogger.getInstance().saveCrashInfoFile(Config.getQrCodeData());
-        manager.uploadFile(FileLogger.getInstance().getFliePath(), new FTPListenter() {
+        final Message message = new Message();
+        manager.connect(new FTPListenter() {
           @Override public void onSuccess() {
-            Log.i(TAG, "onSuccess: ");
             Looper.prepare();
-            Toast.makeText(MainActivity.this, "文件上传成功", Toast.LENGTH_SHORT).show();
+            message.what = 1;
+            connectHandler.sendMessage(message);
             Looper.loop();
           }
 
           @Override public void onProcess(long process) {
-            Log.i(TAG, "onProcess: " + process);
+
           }
 
           @Override public void onFailure(String errorMsg) {
-            Log.i(TAG, "onFailure: " + errorMsg);
             Looper.prepare();
-            Toast.makeText(MainActivity.this, "errorMsg：" + errorMsg, Toast.LENGTH_SHORT).show();
+            message.what = -1;
+            message.obj = errorMsg;
+            connectHandler.sendMessage(message);
             Looper.loop();
           }
         });
+
         break;
       case R.id.btn_setting:
         startActivity(new Intent(this, SettingActivity.class));
@@ -167,11 +230,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     builder.setPositiveButton("确认", new DialogInterface.OnClickListener() {
       @Override public void onClick(DialogInterface dialog, int which) {
         dialog.dismiss();
-        boolean isDelect = FileUtils.deleteFile(FileLogger.getInstance().getFliePath());
-        qrCodeAdapter.clearData();
-        spUtils.put(SP_TAG, "");
-        Config.clearData();
-        Toast.makeText(MainActivity.this, isDelect ? "文件删除成功" : "文件删除失败", Toast.LENGTH_SHORT).show();
+        clearLocalData();
       }
     });
     builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
@@ -180,6 +239,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
       }
     });
     builder.create().show();
+  }
+
+  private void clearLocalData() {
+    boolean isDelect = FileUtils.deleteFile(FileLogger.getInstance().getFliePath());
+    qrCodeAdapter.clearData();
+    spUtils.put(SP_TAG, "");
+    Config.clearData();
+    Toast.makeText(MainActivity.this, isDelect ? "文件删除成功" : "文件删除失败", Toast.LENGTH_SHORT).show();
   }
 
   private void startZbarScan() {

@@ -19,9 +19,9 @@ public class FileLogger {
 
   private static FileLogger instance;
   //崩溃日志文件的名字，前缀，全称 （mFileName + 当天日期），默认txt文件
-  private static String mFileName = "QRCode";
+  private static String mFileName = "Android";
   //文件名之间的分隔符
-  private static String SEPARATOR = "-";
+  private static String SEPARATOR = "_";
   //崩溃日志文件夹的名字，默认为Crash
   private static String mfloadName = "114-QRCode";
 

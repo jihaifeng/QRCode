@@ -1,7 +1,9 @@
 package com.jihf.jihf.qrcode.ftp;
 
+import android.content.Context;
 import android.text.TextUtils;
 import android.util.Log;
+import com.jihf.jihf.qrcode.SPUtils;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -24,16 +26,21 @@ public class FTPManager {
   public static final String TAG = FTPManager.class.getSimpleName();
   private static FTPManager instance;
   private static FTPClient ftpClient;
-  private String url = "220.250.65.22";
-  private int port = -1;
-  private String serverPath = "invoice/";
-  private String userName = "sina";
-  private String userPass = "r7Wd@H0ld";
-  private final int CONNECT_TIMEOUT = 3 * 60 * 1000;
+
+  private final int CONNECT_TIMEOUT = 10 * 1000;
   private boolean isConnected = false;
   private boolean isUpload = false;
+  private static Context mContext;
+  private SPUtils spUtils;
 
-  public static FTPManager getInstance() {
+  private String url;
+  private int port;
+  private String serverPath;
+  private String userName;
+  private String userPass;
+
+  public static FTPManager getInstance(Context context) {
+    mContext = context;
     if (null == instance) {
       synchronized (FTPManager.class) {
         if (null == instance) {
@@ -55,7 +62,6 @@ public class FTPManager {
   public synchronized void uploadFile(final String localPath, final FTPListenter listenter) {
     // 上传文件之前，先判断本地文件是否存在
     if (isConnected) {
-
       new Thread(new Runnable() {
         @Override public void run() {
           upload(localPath, listenter);
@@ -68,10 +74,12 @@ public class FTPManager {
 
   private void upload(String localPath, FTPListenter listenter) {
     try {
+
       File localFile = new File(localPath);
       if (!localFile.exists()) {
         Log.i(TAG, "uploadFile: " + "本地文件不存在");
         listenter.onFailure("本地文件不存在");
+        return;
       }
       Log.i(TAG, "uploadFile: " + "本地文件存在，名称为：" + localFile.getName());
       // 如果文件夹不存在，创建文件夹
@@ -88,20 +96,28 @@ public class FTPManager {
       // 如果本地文件存在，服务器文件也在，上传文件，这个方法中也包括了断点上传
       long localSize = localFile.length();
       // 本地文件的长度
-      FTPFile[] files = ftpClient.listFiles(fileName);
+      int i = 1;
+      String ftpFileName = fileName;
+      while (ftpClient.listFiles(ftpFileName).length != 0) {
+        ftpFileName = fileName.substring(0, fileName.length() - 4) + "_" + i + ".txt";
+        i++;
+      }
+      Log.i(TAG, "upload ftpFileName: " + ftpFileName);
+      FTPFile[] files = ftpClient.listFiles(ftpFileName);
       long serverSize = 0;
-      if (files.length == 0) {
-        Log.i(TAG, "uploadFile: " + "服务器文件不存在");
-        serverSize = 0;
-      } else {
-        serverSize = files[0].getSize(); // 服务器文件的长度
-      }
-      if (localSize <= serverSize) {
-        if (ftpClient.deleteFile(fileName)) {
-          Log.i(TAG, "uploadFile: " + "服务器文件存在,删除文件,开始重新上传");
-          serverSize = 0;
-        }
-      }
+      //if (files.length == 0) {
+      //  Log.i(TAG, "uploadFile: " + "服务器文件不存在");
+      //  serverSize = 0;
+      //} else {
+      //  serverSize = files[0].getSize(); // 服务器文件的长度
+      //}
+      //if (localSize <= serverSize) {
+      //  if (ftpClient.deleteFile(fileName)) {
+      //    Log.i(TAG, "uploadFile: " + "服务器文件存在,删除文件,开始重新上传");
+      //    serverSize = 0;
+      //  }
+      //}
+
       RandomAccessFile raf = new RandomAccessFile(localFile, "r");
       // 进度
       long step = localSize % 100;
@@ -112,7 +128,7 @@ public class FTPManager {
       ftpClient.setFileType(FTP.BINARY_FILE_TYPE);
       ftpClient.setRestartOffset(serverSize);
       raf.seek(serverSize);
-      OutputStream output = ftpClient.appendFileStream(fileName);
+      OutputStream output = ftpClient.appendFileStream(ftpFileName);
       byte[] b = new byte[1024];
       int length = 0;
       while ((length = raf.read(b)) != -1) {
@@ -137,6 +153,7 @@ public class FTPManager {
         Log.i(TAG, "uploadFile: " + "文件上传失败");
         listenter.onFailure("文件上传失败");
       }
+      closeFTP();
     } catch (Exception e) {
       e.printStackTrace();
       Log.i(TAG, "uploadFile Exception: " + e);
@@ -149,7 +166,6 @@ public class FTPManager {
   public synchronized boolean downloadFile(String localPath) {
     // 先判断服务器文件是否存在
     try {
-      connect();
       FTPFile[] files = ftpClient.listFiles(serverPath);
       if (files.length == 0) {
         Log.i(TAG, "uploadFile: " + "服务器文件不存在");
@@ -259,7 +275,8 @@ public class FTPManager {
    * Date：2017-05-22 13:29
    * Mail：jihaifeng@raiyi.com
    */
-  public synchronized FTPManager connect() {
+  public synchronized void connect(final FTPListenter listenter) {
+    initConfig();
     new Thread(new Runnable() {
       @Override public void run() {
         try {
@@ -278,16 +295,27 @@ public class FTPManager {
             if (ftpClient.login(userName, userPass)) {
               isConnected = true;
               Log.i(TAG, "connect: ftp连接成功");
+              listenter.onSuccess();
+            } else {
+              Log.i(TAG, "ftp登录失败");
             }
           }
-        } catch (IOException e) {
+        } catch (Exception e) {
           Log.i(TAG, "connect: " + e);
           e.printStackTrace();
+          listenter.onFailure("ftp连接失败");
         }
       }
     }).start();
+  }
 
-    return this;
+  private void initConfig() {
+    spUtils = new SPUtils("114Scan", mContext);
+    url = spUtils.getString(FTPConfig.URL, FTPConfig.default_url);
+    port = spUtils.getInt(FTPConfig.PORT, FTPConfig.default_port);
+    serverPath = spUtils.getString(FTPConfig.PATH, FTPConfig.default_serverPath);
+    userName = spUtils.getString(FTPConfig.USERNAME, FTPConfig.default_userName);
+    userPass = spUtils.getString(FTPConfig.USERPASS, FTPConfig.default_userPass);
   }
 
   public boolean isConnected() {
@@ -308,45 +336,5 @@ public class FTPManager {
       return false;
     }
     return true;
-  }
-
-  public void setUrl(String url) {
-    this.url = url;
-  }
-
-  public void setPort(int port) {
-    this.port = port;
-  }
-
-  public void setServerPath(String serverPath) {
-    this.serverPath = serverPath;
-  }
-
-  public void setUserName(String userName) {
-    this.userName = userName;
-  }
-
-  public void setUserPass(String userPass) {
-    this.userPass = userPass;
-  }
-
-  public String getUrl() {
-    return url;
-  }
-
-  public int getPort() {
-    return port;
-  }
-
-  public String getServerPath() {
-    return serverPath;
-  }
-
-  public String getUserName() {
-    return userName;
-  }
-
-  public String getUserPass() {
-    return userPass;
   }
 }

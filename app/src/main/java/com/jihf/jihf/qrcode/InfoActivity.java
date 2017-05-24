@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
-import com.jihf.jihf.qrcode.ftp.FTPManager;
+import com.jihf.jihf.qrcode.ftp.FTPConfig;
 
 /**
  * Func：
@@ -15,25 +15,27 @@ import com.jihf.jihf.qrcode.ftp.FTPManager;
  */
 public class InfoActivity extends AppCompatActivity {
   private TextView tvInfo;
+  SPUtils spUtils;
 
   @Override protected void onCreate(@Nullable Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
+    spUtils = new SPUtils("114Scan", this);
     setContentView(R.layout.activity_info);
     tvInfo = (TextView) findViewById(R.id.tv_info);
     tvInfo.setText("url："
-        + FTPManager.getInstance().getUrl()
+        + spUtils.getString(FTPConfig.URL)
         + "\n"
         + "port："
-        + FTPManager.getInstance().getPort()
+        + spUtils.getInt(FTPConfig.PORT)
         + "\n"
         + "path："
-        + FTPManager.getInstance().getServerPath()
+        + spUtils.getString(FTPConfig.PATH)
         + "\n"
         + "userName："
-        + FTPManager.getInstance().getUserName()
+        + spUtils.getString(FTPConfig.USERNAME)
         + "\n"
         + "userPass："
-        + FTPManager.getInstance().getUserPass()
+        + spUtils.getString(FTPConfig.USERPASS)
         + "\n");
   }
 }
