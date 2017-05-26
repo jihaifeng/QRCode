@@ -78,6 +78,7 @@
         android:background="@drawable/btn_bg_select"
         android:text="zbar"
         android:textColor="@android:color/holo_orange_light"
+        android:visibility="gone"
         />
 
   </LinearLayout>

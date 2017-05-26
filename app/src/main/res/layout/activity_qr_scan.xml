@@ -4,6 +4,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+  <ToggleButton
+      android:id="@+id/btn_open_light"
+      android:layout_width="50dp"
+      android:layout_height="50dp"
+      android:layout_alignParentEnd="true"
+      android:layout_alignParentRight="true"
+      android:layout_alignParentTop="true"
+      android:layout_marginEnd="20dp"
+      android:layout_marginRight="20dp"
+      android:layout_marginTop="20dp"
+      android:background="@drawable/bg_circle_clicked"
+      android:textColor="@color/colorAccent"
+      android:textOff="开灯"
+      android:textOn="关灯"/>
+
   <SurfaceView
       android:id="@+id/capture_preview"
       android:layout_width="match_parent"
@@ -67,4 +82,33 @@
       android:background="@drawable/scan_zbar_mask"
       android:contentDescription="@string/app_name"/>
 
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_alignParentBottom="true"
+      android:layout_centerHorizontal="true"
+      android:layout_marginBottom="30sp"
+      android:gravity="center">
+
+    <Button
+        android:id="@+id/btn_scanfile"
+        android:layout_width="120dp"
+        android:layout_height="40dp"
+        android:background="@drawable/bg_round"
+        android:text="打开文件"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        android:visibility="gone"/>
+
+    <Button
+        android:id="@+id/btn_cancel"
+        android:layout_width="120dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginStart="30dp"
+        android:background="@drawable/bg_circle_unclick"
+        android:text="取消"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"/>
+  </LinearLayout>
 </RelativeLayout>
