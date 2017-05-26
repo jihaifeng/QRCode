@@ -24,12 +24,12 @@ import android.widget.ToggleButton;
 import com.jihf.jihf.qrcode.ftp.FTPConfig;
 import com.jihf.jihf.qrcode.ftp.FTPListenter;
 import com.jihf.jihf.qrcode.ftp.FTPManager;
-import com.wsh.base.lib.zxing.CaptureActivity;
-import com.wsh.base.lib.zxing.log.Config;
-import com.wsh.base.lib.zxing.log.FileLogger;
-import com.wsh.base.lib.zxing.log.FileUtils;
+import com.jihf.jihf.qrcode.log.Config;
+import com.jihf.jihf.qrcode.log.FileLogger;
+import com.jihf.jihf.qrcode.log.FileUtils;
 import java.io.IOException;
 import java.util.List;
+import lib.CaptureActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
   public static final String TAG = MainActivity.class.getSimpleName();
@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
   public static final int SCAN_RESOULT_CODE = 1001;
   private QRCodeAdapter qrCodeAdapter;
   private Button btnScan;
+  private Button btnScanNew;
   private Button btnClear;
   private Button btnExport;
   private Button btnUpload;
@@ -118,6 +119,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
   private void initView() {
     btnScan = (Button) findViewById(R.id.btn_scan);
     btnScan.setOnClickListener(this);
+    btnScanNew = (Button) findViewById(R.id.btn_scan_new);
+    btnScanNew.setOnClickListener(this);
     btnClear = (Button) findViewById(R.id.btn_clear);
     btnClear.setOnClickListener(this);
     btnExport = (Button) findViewById(R.id.btn_export);
@@ -220,6 +223,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
       case R.id.btn_check:
         startActivity(new Intent(this, InfoActivity.class));
         break;
+      case R.id.btn_scan_new:
+        startZbarNewScan();
+        break;
     }
   }
 
@@ -254,7 +260,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     startActivityForResult(intent, SCAN_RESOULT_CODE);
   }
 
-  private void startZxingScan() {
+  private void startZbarNewScan() {
     Intent intent = new Intent(this, CaptureActivity.class);
     startActivityForResult(intent, SCAN_RESOULT_CODE);
   }

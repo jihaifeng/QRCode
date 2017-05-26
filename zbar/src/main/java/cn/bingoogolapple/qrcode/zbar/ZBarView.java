@@ -52,8 +52,9 @@ public class ZBarView extends QRCodeView {
 
         }
 
-        barcode.setData(data);
-        result = processData(barcode);
+        //barcode.setData(data);
+        //result = processData(barcode);
+        result = new DecodeUtils(DecodeUtils.DECODE_MODE_ZBAR).decodeWithZbar(data,width,height,rect);
 
         return result;
     }

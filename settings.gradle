@@ -1,1 +1,1 @@
-include ':app', ':WSHZxingLib', ':qrcodecore', ':zbar'
+include ':app', ':qrcodecore', ':zbar'

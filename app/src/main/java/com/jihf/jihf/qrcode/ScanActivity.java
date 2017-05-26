@@ -15,8 +15,8 @@ import android.widget.Toast;
 import android.widget.ToggleButton;
 import cn.bingoogolapple.qrcode.core.QRCodeView;
 import cn.bingoogolapple.qrcode.zbar.ZBarView;
-import com.wsh.base.lib.zxing.log.Config;
-import com.wsh.base.lib.zxing.log.FileLogger;
+import com.jihf.jihf.qrcode.log.Config;
+import com.jihf.jihf.qrcode.log.FileLogger;
 import java.util.ArrayList;
 import java.util.List;
 
